@@ -1,0 +1,55 @@
+{
+  "name": "microfrontends-nx",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/microfrontends-nx/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "web",
+        "outputPath": "dist/apps/microfrontends-nx",
+        "main": "apps/microfrontends-nx/src/main.tsx",
+        "tsConfig": "apps/microfrontends-nx/tsconfig.app.json",
+        "rspackConfig": "apps/microfrontends-nx/rspack.config.js",
+        "assets": [
+          "apps/microfrontends-nx/src/favicon.ico",
+          "apps/microfrontends-nx/src/assets"
+        ]
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/rspack:dev-server",
+      "options": {
+        "buildTarget": "microfrontends-nx:build:development"
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "buildTarget": "microfrontends-nx:build:production"
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "microfrontends-nx:build",
+        "spa": true
+      }
+    }
+  }
+}
