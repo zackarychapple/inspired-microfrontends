@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@microfrontends-nx/acme-components": [
+        "libs/acme-components/src/index.ts"
+      ],
       "docs/Module": ["apps/docs/src/remote-entry.ts"]
     }
   },

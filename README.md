@@ -86,3 +86,10 @@ And join the Nx community:
 - Bumped Rspack versions
 - Create host and remote with this command `npx nx g @nx/react:host apps/main --remotes=docs --bundler=rspack`
 - Test serving app host with `npx nx serve main`
+- Initial commit
+- Add storybook with `nx add @nx/storybook`
+- Generate library with `nx g @nx/react:library libs/acme-components`
+- Generate component with `nx g @nx/react:component libs/acme-components/src/navbar`
+- There is an issue with the css modules to debug later (this is removed anyways because the Next copied component didn't use it)
+- Replace `Link` and `A` with `a`
+- Add tailwind support with `nx g @nx/react:setup-tailwind --project=main`
